@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-[#020205] ${plusJakarta.className} overflow-hidden`}>
         <nav>
-          {/* <Navbar/> */}
+          <Navbar/>
         </nav>  
         {children}
       
