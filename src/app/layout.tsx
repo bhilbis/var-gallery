@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-[#020205] ${plusJakarta.className} overflow-hidden`}>
+      <body className={`bg-[#020505] ${plusJakarta.className} overflow-hidden`}>
         <nav className="flex justify-center">
           <Navbar/>
         </nav>
