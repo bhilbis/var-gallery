@@ -1,18 +1,49 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Image from 'next/image';
+import arrowUp from '../../../public/assets/arrow-up.svg';
+
+const functionNav = [
+{
+  nameText : "Members",
+  id : '#members'
+},
+{
+  nameText: "Projects",
+  id : '#projects'
+},
+{
+  nameText: "Service",
+  id : '#service'
+},
+{
+  nameText: "Let's Talk",
+  id : '#service'
+}
+]
 
 const Navbar = () => {
-    return (
-        <>
-        <div className="container items-center flex justify-center">
-          <Link href="/library" className="block text-md font-[800] uppercase text-[15px] text-gray-500 hover:text-white md:px-3 xl:px-5 xl:text-center">MY LIBRARY</Link>
-          <Link href="/topics" className="block text-md font-[800] uppercase text-[15px] text-gray-500 hover:text-white md:px-3 xl:px-5 xl:text-center">Topics</Link>
-          <Link href="/series" className="block text-md font-[800] uppercase text-[15px] text-gray-500 hover:text-white md:px-3 xl:px-5 xl:text-center">Series</Link>
-          <Link href="/path" className="block text-md font-[800] uppercase text-[15px] text-gray-500 hover:text-white md:px-3 xl:px-5 xl:text-center">Path</Link>
-          <Link href="/larabits" className="block text-md font-[800] uppercase text-[15px] text-gray-500 hover:text-white md:px-3 xl:px-5 xl:text-center">Larabits</Link>
-          <Link href="/forum" className={`block text-md font-[800] uppercase text-[15px] text-white underline underline-offset-[13px] decoration-4 decoration-[#1B55AC]' : 'text-gray-500 hover:text-white'} md:px-3 xl:px-5 xl:text-center`}>Forum</Link>
-        </div>
-        </>
+  return (
+    <div className='fixed z-20 text-center bottom-0 container flex'>
+      <div className='mx-auto bg-[#101D1F]  my-10 text-white rounded-full max-w-full'>
+      <nav className='inline-flex flex-wrap w-[450px] items-center py-2 px-2 justify-between'>
+      <button className='bg-[#AAC8CD] max-w-full w-[10%] m-1 rounded-full'><Image
+      src={arrowUp}
+      width={50}
+      alt='arrow-up'
+      /></button>
+       {
+        functionNav.map((index, item) => (
+              <ul className=' py-2 my-1 px-2 '  key={item}>
+                <li className='text-[16px] font-[500]' >
+                  <a href={index.id}>{index.nameText}</a>
+                </li>
+              </ul>
+
+        ))
+      }
+      </nav>
+      </div>
+    </div>
     )
 }
 
