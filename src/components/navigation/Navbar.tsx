@@ -26,10 +26,11 @@ const Navbar = () => {
     <div className='fixed z-20 text-center bottom-0 container flex'>
       <div className='mx-auto bg-[#101D1F]  my-10 text-white rounded-full max-w-full'>
       <nav className='inline-flex flex-wrap w-[450px] items-center py-2 px-2 justify-between'>
-      <button className='bg-[#AAC8CD] max-w-full w-[10%] m-1 rounded-full'><Image
+      <button title='arrow up' type='button' className='bg-[#AAC8CD] w-[30px] h-[30px] m-1 rounded-full flex items-center justify-center'><Image
       src={arrowUp}
-      width={50}
+      width={20}
       alt='arrow-up'
+      className=''
       /></button>
        {
         functionNav.map((index, item) => (
