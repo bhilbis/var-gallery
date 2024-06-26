@@ -1,11 +1,13 @@
-import { BackgroundGradientAnimationDemo } from "@/components/background/backgroundGradient";
 import { GridBackgroundDemo } from "@/components/background/gridBackground";
+import Members from "@/components/page/members";
+import Projects from "@/components/page/projects";
 
 export default function Home() {
   return (
-   <>
-    <GridBackgroundDemo/>
-    <BackgroundGradientAnimationDemo/>
-   </>
+    <>
+      <GridBackgroundDemo />
+      <Members/>
+      <Projects/>
+    </>
   );
 }

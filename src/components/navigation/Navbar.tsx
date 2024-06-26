@@ -1,51 +1,57 @@
-import React from 'react';
-import Image from 'next/image';
-import arrowUp from '../../../public/assets/arrow-up.svg';
+import React from "react";
+import Image from "next/image";
+import arrowUp from "../../../public/assets/arrow-up.svg";
+import logo1 from "../../../public/assets/Var.svg";
 
 const functionNav = [
-{
-  nameText : "Members",
-  id : '#members'
-},
-{
-  nameText: "Projects",
-  id : '#projects'
-},
-{
-  nameText: "Service",
-  id : '#service'
-},
-{
-  nameText: "Let's Talk",
-  id : '#service'
-}
-]
+  {
+    nameText: "Members",
+    id: "#members",
+  },
+  {
+    nameText: "Projects",
+    id: "#projects",
+  },
+  {
+    nameText: "Service",
+    id: "#service",
+  },
+  {
+    nameText: "Let's Talk",
+    id: "#service",
+  },
+];
 
 const Navbar = () => {
   return (
-    <div className='fixed z-20 text-center bottom-0 container flex'>
-      <div className='mx-auto bg-[#101D1F]  my-10 text-white rounded-full max-w-full'>
-      <nav className='inline-flex flex-wrap w-[450px] items-center py-2 px-2 justify-between'>
-      <button title='arrow up' type='button' className='bg-[#AAC8CD] w-[30px] h-[30px] m-1 rounded-full flex items-center justify-center'><Image
-      src={arrowUp}
-      width={20}
-      alt='arrow-up'
-      className=''
-      /></button>
-       {
-        functionNav.map((index, item) => (
-              <ul className=' py-2 my-1 px-2 ' key={item}>
-                <li className='text-[16px] font-[500]' >
-                  <a href={index.id}>{index.nameText}</a>
-                </li>
-              </ul>
-
-        ))
-      }
-      </nav>
+    <>
+      <div className="top-11 z-20 absolute flex justify-center w-full">
+        <Image src={logo1} width={150} alt="logo" />
       </div>
-    </div>
-    )
-}
+      <div className="fixed z-20 text-center bottom-0 w-full flex justify-center">
+        <div className="bg-[#101D1F] my-10 text-white rounded-full">
+          <nav className="inline-flex items-center py-1 px-2 justify-between space-x-4">
+            <button
+              title="arrow up"
+              type="button"
+              className="bg-[#AAC8CD] w-[40px] h-[40px] rounded-full flex items-center justify-center"
+            >
+              <Image src={arrowUp} width={20} alt="arrow-up" />
+            </button>
+            {functionNav.map((item, index) => (
+              <a
+                key={index}
+                href={item.id}
+                className="py-1 px-2 text-[16px] font-[500] rounded-full hover:bg-[#AAC8CD] transition-colors duration-300"
+              >
+                {item.nameText}
+              </a>
+            ))}
+          </nav>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default Navbar
+export default Navbar;
