@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
-import Navbar from "@/components/navigation/Navbar";
+import { Plus_Jakarta_Sans, Bungee } from "next/font/google";
 import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({ 
@@ -22,7 +21,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-[#020205] ${plusJakarta.className} overflow-hidden`}>
         <nav>
-          <Navbar/>
         </nav>  
         {children}
       
