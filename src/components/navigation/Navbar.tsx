@@ -34,7 +34,7 @@ const Navbar = () => {
       /></button>
        {
         functionNav.map((index, item) => (
-              <ul className=' py-2 my-1 px-2 '  key={item}>
+              <ul className=' py-2 my-1 px-2 ' key={item}>
                 <li className='text-[16px] font-[500]' >
                   <a href={index.id}>{index.nameText}</a>
                 </li>
