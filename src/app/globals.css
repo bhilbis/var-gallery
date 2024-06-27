@@ -1,3 +1,33 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.animate-scroll-up {
+    animation: scroll-up 0.5s forwards;
+  }
+  
+  .animate-scroll-down {
+    animation: scroll-down 0.5s forwards;
+    opacity: 0; /* Initially hide the bottom text */
+  }
+  
+  @keyframes scroll-up {
+    from {
+      transform: translateY(0%);
+    }
+    to {
+      transform: translateY(-100%);
+    }
+  }
+  
+  @keyframes scroll-down {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+  

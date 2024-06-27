@@ -19,8 +19,16 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      
+      animation: {
+        'scroll-txt': 'scrollTxt 1000ms ease-out'
+      }
   },
+  keyframes: {
+    scrollTxt:{
+    '100%': {'transform': 'translateY(-100%)'}
+  }
+}
+
     // rest of the code
   },
   plugins: [
