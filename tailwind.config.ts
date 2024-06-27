@@ -1,39 +1,65 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 const svgToDataUri = require("mini-svg-data-uri");
 const colors = require("tailwindcss/colors");
-import type { Config } from "tailwindcss";
+const flattenColorPalette = require("tailwindcss/lib/util/flattenColorPalette").default;
 
-
-const {
-  default: flattenColorPalette,
-} = require("tailwindcss/lib/util/flattenColorPalette");
-
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    "./src/**/*.{ts,tsx}",
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-
   ],
   darkMode: "class",
   theme: {
     extend: {
       animation: {
-        'scroll-txt': 'scrollTxt 1000ms ease-out'
-      }
-  },
-  keyframes: {
-    scrollTxt:{
-    '100%': {'transform': 'translateY(-100%)'}
-  }
-}
-
-    // rest of the code
+        first: "moveHorizontal 80s ease infinite",
+        second: "moveVertical 70s ease infinite",
+        third: "moveHorizontal 60s ease infinite",
+        fourth: "moveVertical 50s ease infinite",
+        fifth: "moveInCircle 20s ease infinite",
+      },
+      keyframes: {
+        moveHorizontal: {
+          "0%": {
+            transform: "translateX(-50%) translateY(-10%)",
+          },
+          "50%": {
+            transform: "translateX(50%) translateY(10%)",
+          },
+          "100%": {
+            transform: "translateX(-50%) translateY(-10%)",
+          },
+        },
+        moveInCircle: {
+          "0%": {
+            transform: "rotate(0deg)",
+          },
+          "50%": {
+            transform: "rotate(180deg)",
+          },
+          "100%": {
+            transform: "rotate(360deg)",
+          },
+        },
+        moveVertical: {
+          "0%": {
+            transform: "translateY(-50%)",
+          },
+          "50%": {
+            transform: "translateY(50%)",
+          },
+          "100%": {
+            transform: "translateY(-50%)",
+          },
+        },
+      },
+    },
   },
   plugins: [
     addVariablesForColors,
-    function ({ matchUtilities, theme }: any) {
+    function ({ matchUtilities, theme }: { matchUtilities: any, theme: any }) {
       matchUtilities(
         {
           "bg-grid": (value: any) => ({
@@ -58,7 +84,7 @@ module.exports = {
   ],
 };
 
-function addVariablesForColors({ addBase, theme }: any) {
+function addVariablesForColors({ addBase, theme }: { addBase: any, theme: any }) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
