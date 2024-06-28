@@ -1,7 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Avatar from "@/components/members/avatars";
-import AvatarTooltip from "@/components/members/avatarTooltip";
+import Avatar from "./avatars";
+import AvatarTooltip from "./avatarTooltip";
+import Link from "next/link";
 
 const avatarLinks = [
   {
@@ -107,10 +108,19 @@ const Members: React.FC = () => {
               onMouseLeave={() => setHovered(null)}
             />
           ))}
-          <div className="col-span-2 col-start-5 flex justify-center mt-10">
-            <button className="px-16 py-4 bg-blue-600 text-white text-lg font-bold rounded-full transform transition-transform duration-300 hover:scale-110 min-w-[200px]">
-              Join Us
-            </button>
+          <div className="col-span-2 col-start-5 flex justify-center mt-10 text-white">
+          <button
+          type="button"
+          title="serious"
+          className="bg-[#101D1F] px-2 py-2 rounded-full "
+        >
+            <Link href={"/contacts"}>
+          <div className="flex items-center">
+            <div className="rounded-full bg-[#AAC8CD] mr-4 p-8 flex justify-center"></div>
+            <h1 className="pl-2 pr-4">Join Us?</h1>
+          </div>
+            </Link>
+        </button>
         </div>
         </div>
         <AvatarTooltip hovered={hovered} cursorPosition={cursorPosition} />

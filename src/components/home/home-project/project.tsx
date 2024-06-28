@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const projectData = [
   {
@@ -139,10 +140,12 @@ const Projects = () => {
           title="serious"
           className="bg-[#101D1F] px-2 py-2 rounded-full mt-7 flex items-center justify-center mx-auto"
         >
+            <Link href={"/projects"}>
           <div className="flex items-center">
             <div className="rounded-full bg-[#AAC8CD] mr-4 p-8"></div>
             <h1 className="pl-2 pr-4">SERIOUSLY?</h1>
           </div>
+            </Link>
         </button>
       </div>
         </div>

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import arrowUp from '../../../public/assets/arrow-up.svg';
+import logo1 from '../../../public/assets/var.svg'
 
 const functionNav = [
   {
@@ -24,6 +25,10 @@ const functionNav = [
 
 const Navbar = () => {
   return (
+    <>
+    <div className="top-11 z-20 absolute flex justify-center w-full">
+        <Image src={logo1} width={150} alt="logo"/>
+      </div>
     <div className='fixed z-20 text-center bottom-0 container flex'>
       <div className='mx-auto bg-[#101D1F] my-10 text-white rounded-full max-w-full'>
         <nav className='inline-flex flex-row w-[430px] items-center py-[6px] px-[6px] gap-2 '>
@@ -39,6 +44,7 @@ const Navbar = () => {
         </nav>
       </div>
     </div>
+    </>
   );
 };
 
@@ -82,6 +88,7 @@ const ArrowUpIcon = () => {
         </div>
       )}
     </div>
+    
   );
 };
 
