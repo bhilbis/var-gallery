@@ -13,8 +13,17 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      
+      animation: {
+        shine: "shineEffect 5s ease-in-out infinite",
+      },
     },
+    keyframes: {
+      shineEffect: {
+        "0%": { backgroundPosition: "0% 50%" },
+        "50%": { backgroundPosition: "100% 50%" },
+        "100%": { backgroundPosition: "0% 50%" },
+      },
+    }
   },
   plugins: [
     addVariablesForColors,
