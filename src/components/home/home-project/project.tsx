@@ -4,16 +4,16 @@ import Link from "next/link";
 
 const projectData = [
   {
-    title: "SMK Negeri 1 Purwosari",
-    description: "Website | School",
-    imgSrc: "/assets/test.png",
+    title: "Andranoviax - Personal Portofolio",
+    description: "Website | Branding",
+    imgSrc: "/assets/projects/andranoviax.png",
     width: 608,
     height: 399,
   },
   {
-    title: "Project 1",
-    description: "Website | School",
-    imgSrc: "/assets/test.png",
+    title: "Bukwush - Discover Book Series",
+    description: "Mobile app | UI - UX",
+    imgSrc: "/assets/projects/aldo.png",
     width: 508,
     height: 381,
   },
@@ -25,21 +25,21 @@ const projectData = [
     height: 381,
   },
   {
-    title: "SMK Negeri 1 Purwosari",
-    description: "Website | School",
-    imgSrc: "/assets/test.png",
-    width: 608,
-    height: 399,
-  },
-  {
-    title: "SMK Negeri 1 Purwosari",
-    description: "Website | School",
-    imgSrc: "/assets/test.png",
-    width: 608,
-    height: 399,
-  },
-  {
     title: "Project 3",
+    description: "Website | School",
+    imgSrc: "/assets/test.png",
+    width: 608,
+    height: 399,
+  },
+  {
+    title: "Project 4",
+    description: "Website | School",
+    imgSrc: "/assets/test.png",
+    width: 608,
+    height: 399,
+  },
+  {
+    title: "Project 5",
     description: "Website | School",
     imgSrc: "/assets/test.png",
     width: 508,
@@ -78,7 +78,7 @@ const Projects = () => {
               <div className="  ">
                 <button
                   type="button"
-                  className="border px-9 py-2 rounded-full hover:bg-gray-400"
+                  className="border px-9 py-2 rounded-full cursor-hand hover:bg-gray-400"
                 >
                   Details
                 </button>
@@ -120,7 +120,7 @@ const Projects = () => {
                   <div>
                     <button
                       type="button"
-                      className="border px-9 py-2 rounded-full hover:bg-gray-400"
+                      className="border px-9 py-2 rounded-full cursor-hand hover:bg-gray-400"
                     >
                       Details
                     </button>
@@ -133,15 +133,15 @@ const Projects = () => {
 
        <div className="text-center">
         <h1 className="font-bold text-[54px]">
-          Our Creations <span className="underline underline-offset-[13px]">Go Beyond That!</span> <br />Discover More.
+          Our Creations <span className="underline underline-offset-[13px] opacity-[50%]">Go Beyond That!</span> <br />Discover More.
         </h1>
         <button
           type="button"
           title="serious"
-          className="bg-[#101D1F] px-2 py-2 rounded-full mt-7 flex items-center justify-center mx-auto"
+          className="bg-[#101D1F] px-2 py-2 rounded-full mt-7 flex items-center cursor-hand justify-center mx-auto"
         >
             <Link href={"/projects"}>
-          <div className="flex items-center">
+          <div className="flex items-center cursor-hand">
             <div className="rounded-full bg-[#AAC8CD] mr-4 p-8"></div>
             <h1 className="pl-2 pr-4">SERIOUSLY?</h1>
           </div>

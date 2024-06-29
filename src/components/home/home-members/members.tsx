@@ -112,10 +112,10 @@ const Members: React.FC = () => {
           <button
           type="button"
           title="serious"
-          className="bg-[#101D1F] px-2 py-2 rounded-full "
+          className="bg-[#101D1F] px-2 py-2 rounded-full cursor-hand"
         >
             <Link href={"/contacts"}>
-          <div className="flex items-center">
+          <div className="flex items-center cursor-hand">
             <div className="rounded-full bg-[#AAC8CD] mr-4 p-8 flex justify-center"></div>
             <h1 className="pl-2 pr-4">Join Us?</h1>
           </div>

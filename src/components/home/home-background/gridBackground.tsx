@@ -11,7 +11,7 @@ export function GridBackgroundDemo() {
     <>
     <div className="h-[54rem] w-full dark:bg-[#020505] bg-[#020505] dark:bg-grid-white/[0.2] bg-grid-white/[0.2] relative flex items-center justify-center">
       <div className="absolute pointer-events-none inset-0 flex items-center justify-center bg-[#020505] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
-      <div className={`text-center text-[96px] relative z-50 bg-clip-text text-transparent text-white leading-none ${bungee.className}`}>
+      <div className={`text-center text-[96px] relative z-40 bg-clip-text text-transparent text-white leading-none ${bungee.className}`}>
         <p className="-mt-16 mb-5">GROWING,</p>
         <p className="mb-5">EVOLVING,</p>
         <p className="mb-5 flex items-center justify-center">

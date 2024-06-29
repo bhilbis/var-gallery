@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import arrowUp from '../../../public/assets/arrow-up.svg';
-import logo1 from '../../../public/assets/var.svg'
+import logo1 from '../../../public/assets/var.svg';
 
 const functionNav = [
   {
@@ -26,24 +26,19 @@ const functionNav = [
 const Navbar = () => {
   return (
     <>
-    <div className="top-11 z-20 absolute flex justify-center w-full">
-        <Image src={logo1} width={150} alt="logo"/>
+      <div className="top-11 z-20 absolute flex justify-center w-full">
+        <Image src={logo1} width={150} alt="logo" />
       </div>
-    <div className='fixed z-20 text-center bottom-0 container flex'>
-      <div className='mx-auto bg-[#101D1F] my-10 text-white rounded-full max-w-full'>
-        <nav className='inline-flex flex-row w-[430px] items-center py-[6px] px-[6px] gap-2 '>
-          <button title='arrow up' type='button' className='bg-[#AAC8CD] w-[40px] h-[40px] m-1 rounded-full flex items-center justify-center'>
-            <ArrowUpIcon
-            />
-          </button>
-          {
-            functionNav.map((item, index) => (
+      <div className='fixed z-20 text-center bottom-0 container flex'>
+        <div className='mx-auto bg-[#101D1F] my-10 text-white rounded-full max-w-full'>
+          <nav className='inline-flex flex-row w-[430px] items-center py-[6px] px-[6px] gap-2'>
+            <ArrowUpIcon />
+            {functionNav.map((item, index) => (
               <LinkHoverAnimation key={index} text={item.nameText} href={item.id} />
-            ))
-          }
-        </nav>
+            ))}
+          </nav>
+        </div>
       </div>
-    </div>
     </>
   );
 };
@@ -64,7 +59,7 @@ const ArrowUpIcon = () => {
       <button
         title='arrow up'
         type='button'
-        className='bg-transparent w-[40px] h-[40px] m-1 flex items-center justify-center'
+        className='bg-[#AAC8CD] w-[40px] h-[40px] m-1 rounded-full flex items-center justify-center'
         onMouseEnter={handleMouseOver}
         onMouseLeave={handleMouseLeave}
       >
@@ -73,22 +68,11 @@ const ArrowUpIcon = () => {
             src={arrowUp}
             width={20}
             alt='arrow-up'
-            className={`transition-transform duration-300 transform ${hovered ? ' transform -translate-y-[25px] delay-100 ' : ''}`}
+            className={`transition-transform duration-300 transform`}
           />
         </div>
       </button>
-      {hovered && (
-        <div className='absolute top-12 left-1/2 transform -translate-y-[35px] -translate-x-1/2'>
-          <Image
-            src={arrowUp}
-            width={20}
-            alt='arrow-up'
-            className={`transition-transform duration-500 transform ${hovered ? 'transform -tranlate-y-[20px] delay-100' : ''}`}
-          />
-        </div>
-      )}
     </div>
-    
   );
 };
 
@@ -109,7 +93,6 @@ const LinkHoverAnimation: React.FC<LinkHoverAnimationProps> = ({ text, href }) =
   };
 
   return (
-    
     <a
       href={href}
       className="group relative py-2 my-1 px-2 flex justify-center items-center overflow-hidden"
@@ -129,6 +112,5 @@ const LinkHoverAnimation: React.FC<LinkHoverAnimationProps> = ({ text, href }) =
     </a>
   );
 };
-
 
 export default Navbar;
