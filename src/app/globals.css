@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    cursor: url('/assets/cursor1.svg'), auto;
+  }
+
+  .custom-cursor {
+    cursor: url('/assets/cursor1.svg'), auto;
+  }
+  
+  .custom-cursor-hover:hover {
+    cursor: url('/assets/cursor1.svg'), auto;
+  }
+
+  .cursor-hand {
+    cursor: url('/assets/hand-pointer1.svg'), auto;
+  }
