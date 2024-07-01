@@ -3,6 +3,8 @@ const svgToDataUri = require("mini-svg-data-uri");
 const colors = require("tailwindcss/colors");
 const flattenColorPalette = require("tailwindcss/lib/util/flattenColorPalette").default;
 
+
+
 module.exports = {
   content: [
     "./src/**/*.{ts,tsx}",
@@ -14,7 +16,32 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        shine: "shineEffect 5s ease-in-out infinite",
+        first: "moveOne 30s ease infinite",
+        second: "moveTwo 20s reverse infinite",
+      },
+      keyframes: {
+        moveTwo: {
+          "0%": {
+            transform: "translateY(-4%) rotate(0deg)",
+          },
+          "50%": {
+            transform: "translateY(10%) rotate(40deg)",
+          },
+          "100%": {
+            transform: "translateY(-10%) rotate(20deg)",
+          },
+        },
+        moveOne: {
+          "0%": {
+            transform: "translateY(-10%)",
+          },
+          "50%": {
+            transform: "translateY(20%)",
+          },
+          "100%": {
+            transform: "translateY(-20%)",
+          },
+        },
       },
     },
     keyframes: {
