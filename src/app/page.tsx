@@ -6,12 +6,14 @@ import Service from "@/components/home/home-service/service";
 
 export default function Home() {
   return (
-    <>
+
+    <div className="overflow-hidden">
       <GridBackgroundDemo />
       <Members/>
       <Projects/>
       <Service/>
       <Footer/>
-    </>
+      </div>
+
   );
 }

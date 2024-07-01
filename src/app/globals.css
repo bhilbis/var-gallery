@@ -4,6 +4,7 @@
 
 body {
     cursor: url('/assets/cursor1.svg'), auto;
+    /* color: rgb(189, 242, 242); */
   }
 
   .custom-cursor {
