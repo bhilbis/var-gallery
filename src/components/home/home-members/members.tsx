@@ -9,13 +9,13 @@ const avatarLinks = [
     default: "/assets/avatars/aldo.png",
     hover: "/assets/avatars/aldo2.png",
     name: "Aldo",
-    role: "Designer",
+    role: "Creative Director",
   },
   {
     default: "/assets/avatars/levian.png",
     hover: "/assets/avatars/levian2.png",
     name: "Levian",
-    role: "UI Designer",
+    role: "Designer",
   },
   {
     default: "/assets/avatars/bilbis.png",
@@ -65,6 +65,20 @@ const avatarLinks = [
     name: "Alif",
     role: "BE Developer",
   },
+
+  {
+    default: "/assets/avatars/alif.png",
+    hover: "/assets/avatars/alif2.png",
+    name: "Widya",
+    role: "UI Designer",
+  },
+
+  {
+    default: "/assets/avatars/alif.png",
+    hover: "/assets/avatars/alif2.png",
+    name: "Nayla",
+    role: "UI Designer",
+  },
 ];
 
 const Members: React.FC = () => {
@@ -108,7 +122,7 @@ const Members: React.FC = () => {
               onMouseLeave={() => setHovered(null)}
             />
           ))}
-          <div className="col-span-2 col-start-5 flex justify-center mt-10 text-white">
+          <div className="col-span-2 col-start-1 flex justify-center mt-10 text-white">
           <button
           type="button"
           title="serious"
@@ -117,7 +131,7 @@ const Members: React.FC = () => {
             <Link href={"/contacts"}>
           <div className="flex items-center cursor-hand">
             <div className="rounded-full bg-[#AAC8CD] mr-4 p-8 flex justify-center"></div>
-            <h1 className="pl-2 pr-4">Join Us?</h1>
+            <h1 className="pl-2 pr-4">JOIN US?</h1>
           </div>
             </Link>
         </button>

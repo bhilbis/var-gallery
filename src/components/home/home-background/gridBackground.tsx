@@ -22,8 +22,7 @@ export function GridBackgroundDemo() {
           <p className="-mt-16 mb-5">GROWING,</p>
           <p className="mb-5">EVOLVING,</p>
           <p className="mb-5 flex items-center justify-center">
-            <span className="bg-[#548187] px-2 py-1 rounded-md">PROVING</span>
-            &nbsp;OUR
+            <span className="bg-[#548187] rounded-3xl p-2 mr-3">PROVING</span>OUR
           </p>
           <p className="mb-5">WORTH.</p>
         </div>
