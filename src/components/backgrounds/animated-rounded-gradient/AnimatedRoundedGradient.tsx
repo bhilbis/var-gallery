@@ -3,18 +3,24 @@ import { cn } from "@/utils/cn";
 import { useEffect } from "react";
 
 export const AnimatedRoundedGradient = ({
-  mainColor = "189, 242, 252",
+  primaryColor = "126, 189, 198",
+  secondaryColor = "83, 194, 209",
+  tertiaryColor = "83, 194, 209",
   size = "80%",
   className,
 }: {
-  mainColor?: string;
+  primaryColor?: string;
+  secondaryColor?: string;
+  tertiaryColor?: string;
   size?: string;
   className: string;
 }) => {
   useEffect(() => {
-    document.body.style.setProperty("--main-color", mainColor);
+    document.body.style.setProperty("--primary-color", primaryColor);
+    document.body.style.setProperty("--secondary-color", secondaryColor);
+    document.body.style.setProperty("--tertiary-color", tertiaryColor);
     document.body.style.setProperty("--size", size);
-  }, []);
+  }, [primaryColor, secondaryColor, tertiaryColor, size]);
 
   return (
     <>
@@ -43,9 +49,10 @@ export const AnimatedRoundedGradient = ({
       >
         <div
           className={cn(
-            "absolute [background:radial-gradient(circle_at_center,_rgba(var(--main-color),_0.8)_0,_rgba(var(--main-color),_0)_50%)_no-repeat] w-[var(--size)] h-[var(--size)] opacity-100",
+            "absolute [background:radial-gradient(circle_at_center,_rgba(var(--primary-color),_0.8)_0,_rgba(var(--secondary-color),_0)_50%,_rgba(var(--tertiary-color),_0)_100%)_no-repeat] w-[var(--size)] h-[var(--size)] opacity-100",
             className
           )}
+          
         ></div>
       </div>
     </>
