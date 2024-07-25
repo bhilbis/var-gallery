@@ -15,10 +15,13 @@ const Projects: React.FC = () => {
       <div className="relative flex flex-col items-center">
         <AnimatedRoundedGradient className="bottom-[calc(50%-var(--size)/2)] left-[calc(35%-var(--size))] animate-first" />
         <AnimatedRoundedGradient className="top-[calc(20%-var(--size)/2)] right-[calc(35%-var(--size))] animate-first" />
-        <GradientBackground className="relative z-20">
           <div className="bg-transparant">
             <div className="w-870 h-496 relative">
+            <GradientBackground className="relative z-20">
+
               <Image src={"/assets/test.png"} alt="smkpurwosari" width={870} height={496} className="object-cover" loading="lazy" />
+        </GradientBackground>
+          
             </div>
             <div className="w-full max-w-7xl mt-8 px-4">
               <div className="flex justify-between items-center px-2">
@@ -36,7 +39,6 @@ const Projects: React.FC = () => {
               </div>
             </div>
           </div>
-        </GradientBackground>
       </div>
       <ProjectsList />
       {/* <div className="relative z-20"> */}

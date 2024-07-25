@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Avatar from "./avatars";
 import AvatarTooltip from "./avatarTooltip";
 import Link from "next/link";
@@ -84,62 +84,116 @@ const avatarLinks = [
 const Members: React.FC = () => {
   const [hovered, setHovered] = useState<{ name: string; role: string } | null>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [isSwitched, setIsSwitched] = useState(false);
+  const [fillPercentage, setFillPercentage] = useState(0); // Start at 0%
+  const buttonRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      setCursorPosition({ x: event.clientX, y: event.clientY });
+      if (isDragging.current && buttonRef.current && containerRef.current) {
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const buttonRect = buttonRef.current.getBoundingClientRect();
+        let newLeft = event.clientX - containerRect.left - buttonRect.width / 2;
+
+        if (newLeft < 0) {
+          newLeft = 0;
+        } else if (newLeft > containerRect.width - buttonRect.width) {
+          newLeft = containerRect.width - buttonRect.width;
+        }
+
+        const newFillPercentage = (newLeft / (containerRect.width - buttonRect.width)) * 100;
+        setFillPercentage(newFillPercentage);
+
+        buttonRef.current.style.left = `${newLeft}px`;
+      }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    const handleMouseUp = () => {
+      if (isDragging.current && buttonRef.current && containerRef.current) {
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const buttonRect = buttonRef.current.getBoundingClientRect();
+        if (buttonRect.left + buttonRect.width / 2 < containerRect.width / 2) {
+          buttonRef.current.style.left = '0px';
+          setFillPercentage(0);
+          setIsSwitched(false);
+        } else {
+          buttonRef.current.style.left = `${containerRect.width - buttonRect.width}px`;
+          setFillPercentage(100);
+          setIsSwitched(true);
+        }
+        isDragging.current = false;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseup', handleMouseUp);
+
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
 
+  const handleMouseDown = () => {
+    isDragging.current = true;
+  };
+
   return (
     <>
-      <div className="px-[9rem] text-start">
-        <div className="text-[46px] text-white">
-          <p className="font-[500] mb-10">
-            <span className="font-[700] underline underline-offset-8 decoration-white">With determination and hope</span>, we
-            rise, <br /> leaving past flaws behind for a better <span className="italic">future</span>.
-          </p>
-          <p className="font-[500] ml-24">
-            We are here to help you achieve your <span className="font-[700] underline underline-offset-8 decoration-white">dreams</span> <br />
-            and <span className="font-[700] underline underline-offset-8 decoration-white">aspirations</span> through
-            outstanding <span className="italic">design</span> <br /> and functionality.
-          </p>
-        </div>
+    <div className="px-36 text-start">
+      <div className="text-4xl text-white">
+        <p className="font-medium mb-10">
+          <span className="font-bold underline underline-offset-8 decoration-white">With determination and hope</span>, we
+          rise, <br /> leaving past flaws behind for a better <span className="italic">future</span>.
+        </p>
+        <p className="font-medium ml-24">
+          We are here to help you achieve your <span className="font-bold underline underline-offset-8 decoration-white">dreams</span> <br />
+          and <span className="font-bold underline underline-offset-8 decoration-white">aspirations</span> through
+          outstanding <span className="italic">design</span> <br /> and functionality.
+        </p>
       </div>
-
-      <div className="flex flex-col items-center justify-center mt-10 pb-20">
-        <div className="grid grid-cols-6 gap-x-[40px] gap-y-[50px] mb-10">
-          {avatarLinks.map((link, index) => (
-            <Avatar
-              key={index}
-              link={link}
-              onMouseEnter={() => setHovered({ name: link.name, role: link.role })}
-              onMouseLeave={() => setHovered(null)}
-            />
-          ))}
-          <div className="col-span-2 col-start-1 flex justify-center mt-10 text-white">
-          <button
-          type="button"
-          title="serious"
-          className="bg-[#101D1F] px-2 py-2 rounded-full cursor-hand"
-        >
-            <Link href={"/contacts"}>
-          <div className="flex items-center cursor-hand">
-            <div className="rounded-full bg-[#AAC8CD] mr-4 p-8 flex justify-center"></div>
-            <h1 className="pl-2 pr-4">JOIN US?</h1>
+    </div>
+  
+    <div className="flex flex-col items-center justify-center mt-10 pb-20">
+      <div className="grid grid-cols-6 gap-x-10 gap-y-12 mb-10">
+        {avatarLinks.map((link, index) => (
+          <Avatar
+            key={index}
+            link={link}
+            onMouseEnter={() => setHovered({ name: link.name, role: link.role })}
+            onMouseLeave={() => setHovered(null)}
+          />
+        ))}
+        <div className="col-span-2 col-start-1 flex justify-center mt-10 text-white">
+          <div
+            ref={containerRef}
+            className="relative w-64 h-20 bg-[#101D1F] rounded-full overflow-hidden flex items-center justify-center"
+          >
+            <div
+              className="absolute top-0 left-0 h-full bg-[#AAC8CD] rounded-full"
+              style={{ width: `${fillPercentage}%` }}
+              id="fillBackground"
+            ></div>
+            <div
+              ref={buttonRef}
+              className="absolute top-0 w-20 h-20 bg-[#AAC8CD] rounded-full cursor-pointer"
+              style={{ left: '0px' }}
+              onMouseDown={handleMouseDown}
+              id="sliderButton"
+            ></div>
+            <div className="absolute w-full text-center">
+              <Link href={"/contacts"}>
+                <h1 className="text-white">{isSwitched ? 'APPLY NOW!' : 'JOIN US?'}</h1>
+              </Link>
+            </div>
           </div>
-            </Link>
-        </button>
         </div>
-        </div>
-        <AvatarTooltip hovered={hovered} cursorPosition={cursorPosition} />
       </div>
-    </>
+      <AvatarTooltip hovered={hovered} cursorPosition={cursorPosition} />
+    </div>
+  </>
   );
 };
 

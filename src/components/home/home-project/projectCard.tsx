@@ -16,10 +16,13 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, imgSrc, width, height, link, index }) => (
   <div className={`flex flex-col items-center ${index % 2 === 0 ? "self-start" : "self-end mt-36"}`}>
-    <GradientBackground>
       <div className="bg-transparant">
         <div className={`relative w-${width} h-${height}`}>
+        <GradientBackground>
+
           <Image src={imgSrc} alt={title} width={width} height={height} className="object-cover" loading="lazy" />
+    </GradientBackground>
+        
         </div>
         <div className="w-full max-w-7xl mt-8">
           <div className="flex justify-between items-center px-9">
@@ -35,7 +38,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, imgSrc, w
           </div>
         </div>
       </div>
-    </GradientBackground>
   </div>
 );
 
